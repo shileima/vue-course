@@ -5,7 +5,23 @@ export default [
     path: '/',
     alias: '/home', // 别名
     name: 'home',
-    component: Home
+    component: Home,
+    props: route => ({
+      food: route.query.food
+    }),
+    // 5,路由独享的守卫 beforeEnter
+    beforeEnter: (to, from, next) => {
+      console.log('5,路由独享的守卫 beforeEnter')
+      // if (from.name === 'about') alert('from about page')
+      // else alert('not from about page')
+      // next()
+      next()
+    }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login.vue')
   },
   {
     path: '/about',
@@ -13,7 +29,14 @@ export default [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue')
+    component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue'),
+    // 优先走路由内配置的变量 food
+    // props: {
+    //   food: 'apple'
+    // }
+    meta: {
+      title: '关于'
+    }
   },
   {
     path: '/argu/:name',
@@ -44,5 +67,9 @@ export default [
   {
     path: '/main',
     redirect: to => '/'
+  },
+  {
+    path: '*',
+    component: () => import('@/views/error_404.vue')
   }
 ]
