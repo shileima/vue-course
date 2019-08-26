@@ -5,8 +5,9 @@
     <a-input v-model="inputValue" />
     <p>{{ inputValue }}</p>
     <a-show :content="inputValue" />
-    <p>vuex state: {{ appName }} | getter: {{ appNameWithVersion }}</p>
+    <p>vuex state: {{ appName }}?{{ appVersion }} | getter: {{ appNameWithVersion }}</p>
     <p>vuex user module: {{ userName }} | user getter: {{ firstLetter }}</p>
+    <button @click="changeAppname">mutation click</button>
 
   </div>
 </template>
@@ -39,7 +40,7 @@ export default {
     }) */
     /* 方法三 */
     ...mapState({
-      appName: state => state.appName,
+      //appName: state => state.appName,
       userName: state => state.user.userName
     }),
     /* 方法二 */
@@ -51,6 +52,12 @@ export default {
     userName(){
       return this.$store.state.user.userName
     } */
+    appName(){
+      return this.$store.state.appName
+    },
+    appVersion(){
+      return this.$store.state.appVersion
+    },
     appNameWithVersion(){
       return this.$store.getters.appNameWithVersion
     },
@@ -61,6 +68,16 @@ export default {
   components: {
     AInput,
     AShow
+  },
+  methods: {
+    changeAppname(){
+      // this.$store.commit('AET_APP_NAME', 'new app name')
+      this.$store.commit({
+        type: 'SET_APP_NAME',
+        value: 'new name'
+      })
+      this.$store.commit('SET_APP_VERSION')
+    }
   }
 }
 </script>
