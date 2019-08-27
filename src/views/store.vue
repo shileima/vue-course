@@ -8,6 +8,10 @@
     <p>vuex state: {{ appName }}?{{ appVersion }} | getter: {{ appNameWithVersion }}</p>
     <p>vuex user module: {{ userName }} | user getter: {{ firstLetter }}</p>
     <button @click="changeAppname">mutation click</button>
+    <button @click="changeUsername">mutation username</button>
+    <button @click="handleActions">handleActions updateUsername</button>
+    <button @click="registerModule">动态注册模块</button>
+    <p v-for="(li, index) in todoList" :key="index">{{ li }}</p>
 
   </div>
 </template>
@@ -15,7 +19,7 @@
 <script>
 import AInput from '_c/AInput.vue'
 import AShow from '_c/AShow.vue'
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 
 /* import { createNamespacedHelpers } from 'vuex'
 const { mapState } = createNamespacedHelpers('user') */
@@ -41,7 +45,9 @@ export default {
     /* 方法三 */
     ...mapState({
       //appName: state => state.appName,
-      userName: state => state.user.userName
+      userName: state => state.user.userName,
+      appVersion: state => state.appVersion,
+      todoList: state => state.user.todo ? state.user.todo.todoList : []
     }),
     /* 方法二 */
     /* ...mapState(['appName','userName']) */
@@ -55,9 +61,9 @@ export default {
     appName(){
       return this.$store.state.appName
     },
-    appVersion(){
-      return this.$store.state.appVersion
-    },
+    // appVersion(){
+    //   return this.$store.state.appVersion
+    // },
     appNameWithVersion(){
       return this.$store.getters.appNameWithVersion
     },
@@ -70,13 +76,48 @@ export default {
     AShow
   },
   methods: {
-    changeAppname(){
-      // this.$store.commit('AET_APP_NAME', 'new app name')
-      this.$store.commit({
-        type: 'SET_APP_NAME',
-        value: 'new name'
+    ...mapMutations(['SET_APP_VERSION','SET_APP_NAME','SET_USER_NAME']),
+    ...mapActions(['updateAppname']),
+    registerModule () {
+      // this.$store.registerModule('todo', {
+      //   state: {
+      //     todoList: [
+      //       'learn mutations',
+      //       'learn actions'
+      //     ]
+      //   }
+      // })
+      // 给子模块 user 注册 todo 数据
+      this.$store.registerModule(['user','todo'], {
+        state: {
+          todoList: [
+            '1',
+            '2'
+          ]
+        }
       })
-      this.$store.commit('SET_APP_VERSION')
+    },
+    handleActions(){
+      this.updateAppname()
+      // this.$store.dispatch('updateAppname')
+    },
+    changeAppname(){
+      // 方法一、
+      // this.$store.commit('SET_APP_NAME', 'new app name')
+
+      // 方法二、
+      // this.$store.commit({
+      //   type: 'SET_APP_NAME',
+      //   value: 'new name'
+      // })
+      // this.$store.commit('SET_APP_VERSION')
+
+      // 方法三、
+      this.SET_APP_VERSION('new name')
+      this.SET_APP_VERSION()
+    },
+    changeUsername(){
+      this.SET_USER_NAME('vue-new-username')
     }
   }
 }

@@ -8,11 +8,15 @@ const getters = {
 }
 
 const actions = {
-  //
+  updateUserName({ commit, state, rootState, dispatch }){
+
+  }
 }
 
 const mutations = {
-  //
+  SET_USER_NAME (state, params) {
+    state.userName = params
+  }
 }
 
 export default {
@@ -20,5 +24,8 @@ export default {
   state,
   getters,
   actions,
-  mutations
+  mutations,
+  modules: {
+    //
+  }
 }
