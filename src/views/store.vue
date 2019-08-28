@@ -1,12 +1,16 @@
 <template>
   <div>
     <h1>store</h1>
+    
+    <!-- vuex 全局属性getter setter 双向绑定 -->
+    <p><a-input v-model="stateGetValue" />{{ stateGetValue }}</p>
+    <!-- vuex 事件驱动双向绑定 -->
+    <p><a-input :value="stateValue" @input="handleStateValueChange" />{{ stateValue }}</p>
     <!-- v-model 把 value  和 inputValue 双向绑定 -->
-    <a-input v-model="inputValue" />
-    <p>{{ inputValue }}</p>
+    <p><a-input v-model="inputValue" />{{ inputValue }}</p>
     <a-show :content="inputValue" />
     <p>vuex state: {{ appName }}?{{ appVersion }} | getter: {{ appNameWithVersion }}</p>
-    <p>vuex user module: {{ userName }} | user getter: {{ firstLetter }}</p>
+    <p>username in module: {{ userName }} | user getter: {{ firstLetter }}</p>
     <button @click="changeAppname">mutation click</button>
     <button @click="changeUsername">mutation username</button>
     <button @click="handleActions">handleActions updateUsername</button>
@@ -47,8 +51,17 @@ export default {
       //appName: state => state.appName,
       userName: state => state.user.userName,
       appVersion: state => state.appVersion,
-      todoList: state => state.user.todo ? state.user.todo.todoList : []
+      todoList: state => state.user.todo ? state.user.todo.todoList : [],
+      stateValue: state => state.stateValue
     }),
+    stateGetValue: {
+      get () {
+        return this.$store.state.stateGetValue
+      },
+      set (val) {
+        this.SET_GET_VALUE(val)
+      }
+    },
     /* 方法二 */
     /* ...mapState(['appName','userName']) */
     /* 方法一 */
@@ -76,7 +89,7 @@ export default {
     AShow
   },
   methods: {
-    ...mapMutations(['SET_APP_VERSION','SET_APP_NAME','SET_USER_NAME']),
+    ...mapMutations(['SET_APP_VERSION','SET_APP_NAME','SET_USER_NAME', 'SET_STATE_VALUE','SET_GET_VALUE']),
     ...mapActions(['updateAppname']),
     registerModule () {
       // this.$store.registerModule('todo', {
@@ -118,6 +131,10 @@ export default {
     },
     changeUsername(){
       this.SET_USER_NAME('vue-new-username')
+      // this.$store.state.user.userName = 'hahaha'
+    },
+    handleStateValueChange(val){
+      this.SET_STATE_VALUE(val)
     }
   }
 }

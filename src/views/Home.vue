@@ -4,12 +4,14 @@
     <button @click="handleClick('back')">上一页</button>
     <button @click="handleClick('push')">push to /parent</button>
     <button @click="handleClick('replace')">replace to /about</button>
+    <button @click="getUserInfo">请求数据</button>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import { getUserInfo } from '@/api/user'
 
 export default {
   name: 'home',
@@ -65,6 +67,9 @@ export default {
         })
       }
       // console.log(this);
+    },
+    getUserInfo(){
+      getUserInfo().then(res => { console.log(res) })
     }
   }
 }
