@@ -4,7 +4,7 @@
     <button @click="handleClick('back')">上一页</button>
     <button @click="handleClick('push')">push to /parent</button>
     <button @click="handleClick('replace')">replace to /about</button>
-    <button @click="getUserInfo">请求数据</button>
+    <button @click="getInfo">请求数据</button>
   </div>
 </template>
 
@@ -68,7 +68,7 @@ export default {
       }
       // console.log(this);
     },
-    getUserInfo(){
+    getInfo(){
       getUserInfo().then(res => { console.log(res) })
     }
   }
