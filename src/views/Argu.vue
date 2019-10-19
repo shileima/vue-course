@@ -1,17 +1,20 @@
 <template>
-  <div class="home">
-    {{ $route.params.name }}
-  </div>
+  <div class="home">{{ name }}</div>
 </template>
 
 <script>
 // @ is an alias to /src
 
 export default {
-  beforeRouteUpdate (to, from, next){
-    // console.log(to.name, from.name)
-    // console.log(this); // 有 this
-
+  props: {
+    name: {
+      type: String,
+      default: "loading"
+    }
+  },
+  beforeRouteUpdate(to, from, next) {
+    console.log(to.name, from.name);
+    console.log(this); // 有 this
   }
-}
+};
 </script>

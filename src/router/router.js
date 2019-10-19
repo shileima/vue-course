@@ -31,9 +31,9 @@ export default [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue'),
     // 优先走路由内配置的变量 food
-    // props: {
-    //   food: 'apple'
-    // }
+    props: {
+      food: 'about'
+    },
     meta: {
       title: '关于'
     }
@@ -41,7 +41,8 @@ export default [
   {
     path: '/argu/:name',
     name: 'argu',
-    component: () => import('@/views/Argu.vue')
+    component: () => import('@/views/Argu.vue'),
+    props: true
   },
   {
     path: '/parent',

@@ -6,6 +6,7 @@ import { setTitle } from '../lib/util'
 Vue.use(Router)
 
 const router = new Router({
+  mode: 'hash',
   routes
 })
 

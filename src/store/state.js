@@ -1,5 +1,6 @@
 const state = {
-  appName: 'vue-admin'
+  appName: 'vue-app-name',
+  stateValue: 'valuefromState'
   // appVersion: 'v1.0'
 }
 

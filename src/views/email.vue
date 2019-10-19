@@ -1,21 +1,19 @@
 <template>
-  <div>
-    email vue: {{ message }}
-  </div>
+  <div>email vue: {{ message }}</div>
 </template>
 
 <script>
 export default {
-  data(){
+  data() {
     return {
-      message: ''
-    }
+      message: ""
+    };
   },
-  mounted(){
+  mounted() {
     // 监听 $bus 的事件
-    this.$bus.$on('on-click', val => {
-      this.message = val
-    })
+    this.$bus.$on("bind-click", val => {
+      this.message = val;
+    });
   }
-}
+};
 </script>
