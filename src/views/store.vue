@@ -1,6 +1,9 @@
 <template>
   <div>
     <h1>store</h1>
+
+    <!-- vuex 全局属性getter setter 双向绑定 -->
+    <!-- vuex 事件驱动双向绑定 -->
     <!-- v-model 把 value  和 inputValue 双向绑定 -->
     <!-- <a-input :value="stateValue" @input="handleValueChange" />
     <p>{{ stateValue }}</p>-->
