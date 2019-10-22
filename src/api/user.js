@@ -1,8 +1,10 @@
 import axios from './index'
 
-export const getUserInfo = () => {
+export const getUserInfo = ({ userId }) => {
+  console.log('getUserInfo')
   return axios.request({
-    url: '/userInfo',
-    method: 'post'
+    url: '/api/getUserInfo',
+    method: 'post',
+    data: { userId }
   })
 }

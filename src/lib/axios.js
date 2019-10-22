@@ -1,39 +1,53 @@
+/* eslint-disable space-before-function-paren */
 import axios from 'axios'
-import { BASE_URL } from '@/config/index'
-
+import { BASE_URL } from '@/config'
 class HttpRequest {
-  constructor (baseUrl = BASE_URL) {
+  constructor(baseUrl = BASE_URL) {
     this.baseUrl = baseUrl
     this.queue = {}
   }
-  getInsideConfig () {
+  // global config
+  getInsideConfig() {
     const config = {
       baseUrl: this.baseUrl,
       headers: {
-        //
+
       }
     }
     return config
   }
-  // 请求前后的拦截器设置
-  interceptors (instance) {
+  interceptors(instance, url) {
     instance.interceptors.request.use(config => {
-      // add global loading
-      // Spin.show()
+      // add global loading(vue Spin component)
+      console.log('interceptors.request')
+      // console.log(config)
+      if (!Object.keys(this.queue).length) {
+        // Spin.show()
+        document.title = 'loading...'
+      }
+      this.queue[url] = true
       return config
-    }, err => { return Promise.reject(err) })
-    instance.interceptors.response.use(res => {
-      console.log(res)
-      return res
     }, err => {
       return Promise.reject(err)
     })
+    instance.interceptors.response.use(res => {
+      console.log('interceptors.response')
+      delete this.queue[url]
+      document.title = 'done'
+      // console.log(res)
+      return res
+    }, err => {
+      delete this.queue[url]
+      document.title = 'done'
+      return Promise.reject(err)
+    })
   }
-  request (options) {
+  request(options) {
     const instance = axios.create()
     options = Object.assign(this.getInsideConfig(), options)
-    this.interceptors(instance)
+    this.interceptors(instance, options.url)
     return instance(options)
   }
 }
+
 export default HttpRequest
