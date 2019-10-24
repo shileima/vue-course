@@ -49,6 +49,11 @@ export default [
     component: () => import('@/views/split-pane.vue')
   },
   {
+    path: '/render-page',
+    name: 'renderPage',
+    component: () => import('@/views/render-page.vue')
+  },
+  {
     path: '/argu/:name',
     name: 'argu',
     component: () => import('@/views/Argu.vue'),
