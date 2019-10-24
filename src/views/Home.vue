@@ -79,8 +79,10 @@ export default {
       getUserInfo({ userId: 21 }).then(
         res => {
           console.log("res:", res.data);
-          this.url = res.data[0].img_base64;
-          this.bgColor = res.data[0].color;
+          if (res.data[0] !== undefined) {
+            this.url = res.data[0].img_base64;
+            this.bgColor = res.data[0].color;
+          }
         },
         err => {
           console.log(err);
