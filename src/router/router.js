@@ -54,6 +54,11 @@ export default [
     component: () => import('@/views/render-page.vue')
   },
   {
+    path: '/search',
+    name: 'search',
+    component: () => import('@/views/search')
+  },
+  {
     path: '/argu/:name',
     name: 'argu',
     component: () => import('@/views/Argu.vue'),
