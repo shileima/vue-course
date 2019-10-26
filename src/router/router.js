@@ -59,6 +59,11 @@ export default [
     component: () => import('@/views/search')
   },
   {
+    path: '/functional',
+    name: 'functional',
+    component: () => import('@/views/functional-view')
+  },
+  {
     path: '/argu/:name',
     name: 'argu',
     component: () => import('@/views/Argu.vue'),
