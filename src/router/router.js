@@ -64,6 +64,11 @@ export default [
     component: () => import('@/views/functional-view')
   },
   {
+    path: '/menu-page',
+    name: 'menuPage',
+    component: () => import('@/views/menu-page')
+  },
+  {
     path: '/argu/:name',
     name: 'argu',
     component: () => import('@/views/Argu.vue'),
