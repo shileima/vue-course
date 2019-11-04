@@ -22,6 +22,37 @@ export default {
   name: "menu_page",
   components: {
     ...menuComponent
+  },
+  data(){
+    return {
+      list:[
+        {
+          title:'1111'
+        },
+        {
+          title:'2222'
+        },
+        {
+          title:'3333',
+          children:[
+            {
+              title:'3333-111'
+            },
+            {
+              title:'3333-222'
+            },
+            {
+              title:'3333-333',
+              children:[
+                {
+                  title:'3333-333-11'
+                },
+              ]
+            }
+          ]
+        }
+      ]
+    }
   }
 };
 </script>

@@ -38,6 +38,7 @@ export default {
   }
   &-child-box {
     overflow: hidden;
+    padding-left: 10px;
   }
 }
 </style>
