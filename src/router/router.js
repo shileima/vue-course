@@ -85,6 +85,12 @@ export default [
       }
     ]
   },
+  {
+    path: '/profile',
+    name: 'profile',
+    meta: { needLogin: true },
+    component: () => import('@/views/profile.vue')
+  },
   // 命名视图
   {
     path: '/named_view',

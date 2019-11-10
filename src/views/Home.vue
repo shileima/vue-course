@@ -1,18 +1,21 @@
 <template>
   <div class="home">
+    <p>当前用户{{$store.state.username}}</p>
     <b>{{ food }}</b>
     <button @click="handleClick('back')">上一页</button>
     <button @click="handleClick('push')">push to /parent</button>
     <button @click="handleClick('replace')">replace to /about</button>
     <button @click="getInfo" :style="{background:bgColor}">请求数据</button>
+    <button @click="getUserData">getUser</button>
     <img id="url" :src="url" />
+    <div></div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
-import { getUserInfo } from "@/api/user";
+import { getUserInfo, login, getUser } from "@/api/user";
 // import axios from "axios";
 
 export default {
@@ -91,6 +94,16 @@ export default {
       /* axios.post("http://127.0.0.1:3001/api/getUserInfo").then(res => {
         console.log(res);
       }); */
+    },
+    getUserData() {
+      getUser().then(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log(err);
+        }
+      );
     }
   }
 };

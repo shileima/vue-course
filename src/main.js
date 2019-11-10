@@ -3,11 +3,15 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import ViewUI from 'view-design'
+import 'view-design/dist/styles/iview.css'
+
 import Bus from './lib/bus' // 组件间交互中介
 import CountTo from '_c/count-to'
 if (process.env.NODE_ENV !== 'production') {
   require('./mock')
 }
+Vue.use(ViewUI)
 Vue.config.productionTip = false
 Vue.prototype.$bus = Bus
 

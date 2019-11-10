@@ -1,43 +1,51 @@
 <template>
   <div id="app">
+    <Spin fix v-if="showLoading">加载中...</Spin>
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link :to="{name:'about'}">About</router-link> |
+      <router-link to="/">Home</router-link>|
+      <router-link :to="{name:'login'}">Login</router-link>|
+      <router-link :to="{name:'profile'}">Profile</router-link>|
       <router-link :to="{name:'store'}">Store</router-link>
     </div>
     <!-- <transition name="routerv">
       <router-view key="default"/>
-    </transition> -->
+    </transition>-->
     <transition-group :name="routeTransition">
-      <router-view key="default"/>
+      <router-view key="default" />
       <router-view key="email" name="email" />
       <router-view key="tel" name="tel" />
     </transition-group>
-
-
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
-      routeTransition: ''
+      routeTransition: ""
+      // showLoading: this.$store.state.isLoading // data 内数据变化不刷新页面
+    };
+  },
+  computed: {
+    showLoading() {
+      return this.$store.state.isLoading;
     }
   },
   watch: {
-    '$route' (to){
-      console.log(to)
-      to.query && to.query.transitionName && (this.routeTransition = to.query.transitionName)
+    $route(to) {
+      console.log(to);
+      to.query &&
+        to.query.transitionName &&
+        (this.routeTransition = to.query.transitionName);
     }
   }
-}
+};
 </script>
 <style lang="less">
 .routerv-enter {
   opacity: 0;
 }
 .routerv-enter-active {
-  transition: opacity 1s ease
+  transition: opacity 1s ease;
 }
 .routerv-enter-to {
   opacity: 1;
@@ -46,14 +54,14 @@ export default {
   opacity: 1;
 }
 .routerv-leave-active {
-  transition: opacity 1s ease
+  transition: opacity 1s ease;
 }
 .routerv-leave-to {
   opacity: 0;
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

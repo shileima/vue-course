@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './router'
 import { setTitle } from '../lib/util'
+import store from '../store'
 
 Vue.use(Router)
 
@@ -11,19 +12,28 @@ const router = new Router({
 })
 
 // 全局拦截守卫
-let HAS_LOGINED = true
-
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
+  let isLogin = await store.dispatch('validate')
+  console.log(to.matched)
+  let needLogin = to.matched.some(item => item.meta.needLogin)
+  if (needLogin) {
+    if (to.name !== 'login') {
+      if (isLogin) next()
+      else next({ name: 'login' })
+    } else {
+      if (isLogin) next('/')
+      else next()
+    }
+  } else {
+    if (to.name !== 'login') {
+      next()
+    } else {
+      if (isLogin) next('/')
+      else next()
+    }
+  }
   console.log('3,全局的前置守卫 beforeEach')
   to.meta && setTitle(to.meta.title)
-  // console.log(HAS_LOGINED)
-  if (to.name !== 'login') {
-    if (HAS_LOGINED) next()
-    else next({ name: 'login' })
-  } else {
-    if (HAS_LOGINED) next('/home')
-    else next()
-  }
 })
 
 // 解析守卫
