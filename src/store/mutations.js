@@ -1,5 +1,6 @@
 /* eslint-disable space-before-function-paren */
 import Vue from 'vue'
+import { setToken } from '../lib/util'
 
 const mutations = {
   SET_APP_NAME(state, { value }) {
@@ -26,6 +27,7 @@ const mutations = {
   },
   UPDATE_TOKEN(state, token) {
     state.token = token
+    setToken(token)
   }
 }
 

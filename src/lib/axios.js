@@ -35,7 +35,7 @@ class HttpRequest {
       delete this.queue[url]
       document.title = 'done'
       // console.log(res)
-      return res
+      return res.data
     }, err => {
       delete this.queue[url]
       document.title = 'done'

@@ -1,6 +1,7 @@
 /* eslint-disable space-before-function-paren */
 import axios from 'axios'
 import store from '../store'
+import { getToken } from '../lib/util'
 
 class AjaxRequest {
   // baseUrl
@@ -18,7 +19,9 @@ class AjaxRequest {
         store.commit('SET_SHOW_LOADING')
       }
       this.queue[url] = url
-      config.headers.Authorization = JSON.parse(localStorage.getItem('state')).token
+      // config.headers.Authorization = JSON.parse(localStorage.getItem('state')).token
+      console.log(getToken())
+      config.headers.Authorization = getToken()
       return config
     })
     instance.interceptors.response.use(res => {

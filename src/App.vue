@@ -6,6 +6,7 @@
       <router-link :to="{name:'login'}">Login</router-link>|
       <router-link :to="{name:'profile'}">Profile</router-link>|
       <router-link :to="{name:'store'}">Store</router-link>
+      <Button type="primary" @click="handleLogout">退出</Button>
     </div>
     <!-- <transition name="routerv">
       <router-view key="default"/>
@@ -18,6 +19,7 @@
   </div>
 </template>
 <script>
+import { mapActions } from "vuex";
 export default {
   data() {
     return {
@@ -28,6 +30,14 @@ export default {
   computed: {
     showLoading() {
       return this.$store.state.isLoading;
+    }
+  },
+  methods: {
+    ...mapActions(["logout"]),
+    handleLogout() {
+      this.logout();
+      this.$Message.success("退出成功");
+      this.$router.push({ name: "login" });
     }
   },
   watch: {

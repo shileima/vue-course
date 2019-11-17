@@ -17,11 +17,11 @@ export const getUser = () => {
   })
 }
 
-export const login = username => {
+export const login = (username, password) => {
   return ajax.request({
     url: '/login',
     method: 'post',
-    data: { username }
+    data: { username, password }
   })
 }
 

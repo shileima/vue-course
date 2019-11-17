@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './router'
-import { setTitle } from '../lib/util'
+import { setTitle, getToken } from '../lib/util'
 import store from '../store'
-
 Vue.use(Router)
 
 const router = new Router({
@@ -13,8 +12,9 @@ const router = new Router({
 
 // 全局拦截守卫
 router.beforeEach(async (to, from, next) => {
+  let token = getToken()
+  console.log(token)
   let isLogin = await store.dispatch('validate')
-  console.log(to.matched)
   let needLogin = to.matched.some(item => item.meta.needLogin)
   if (needLogin) {
     if (to.name !== 'login') {
