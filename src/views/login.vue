@@ -17,6 +17,9 @@ export default {
       password: ""
     };
   },
+  mounted() {
+    console.log(this._info);
+  },
   methods: {
     ...mapActions(["toLogin"]),
     handleLogin() {

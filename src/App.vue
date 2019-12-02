@@ -5,8 +5,10 @@
       <router-link to="/">Home</router-link>|
       <router-link :to="{name:'login'}">Login</router-link>|
       <router-link :to="{name:'profile'}">Profile</router-link>|
-      <router-link :to="{name:'store'}">Store</router-link>
-      <Button type="primary" @click="handleLogout">退出</Button>
+      <router-link :to="{name:'store'}">Store</router-link>|
+      <router-link :to="{name:'table'}">table</router-link>|
+      <router-link :to="{name:'message'}">message</router-link>|
+      <Button @click="handleLogout">退出</Button>
     </div>
     <!-- <transition name="routerv">
       <router-view key="default"/>
@@ -26,6 +28,12 @@ export default {
       routeTransition: ""
       // showLoading: this.$store.state.isLoading // data 内数据变化不刷新页面
     };
+  },
+  props: {
+    type: {
+      type: String,
+      default: "default"
+    }
   },
   computed: {
     showLoading() {

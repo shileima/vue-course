@@ -91,6 +91,20 @@ export default [
     meta: { needLogin: true },
     component: () => import('@/views/profile.vue')
   },
+  // table
+  {
+    path: '/table',
+    name: 'table',
+    meta: { needLogin: false },
+    component: () => import('@/views/table.vue')
+  },
+  // Message
+  {
+    path: '/message',
+    name: 'message',
+    meta: { needLogin: false },
+    component: () => import('@/views/message.vue')
+  },
   // 命名视图
   {
     path: '/named_view',

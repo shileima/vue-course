@@ -30,7 +30,13 @@ const getEleArr = h => list.map((item, index) => h('li', {
     'click': eventClick
   }
 }, item.name))
+let info = { a: 2, b: 10 }
 new Vue({
+  name: 'parent',
+  mounted () {
+    console.log('mixin beforeCreate')
+  },
+  info,
   router,
   store,
   /* render: h => h('div', {
