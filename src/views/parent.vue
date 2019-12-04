@@ -1,6 +1,7 @@
 <template>
   <div class="about">
     <h1>This is parent</h1>
+    <Button @click="sayToGirl">对女孩说</Button>
     <Child @hook:mounted="handleChildMounted" />
     <router-view />
   </div>
@@ -22,6 +23,9 @@ export default {
   methods: {
     handleChildMounted() {
       console.log("notify child mounted");
+    },
+    sayToGirl(){
+      this.$bus.$emit('dinner','你饿吗')
     }
   }
 };

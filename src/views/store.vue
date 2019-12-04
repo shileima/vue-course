@@ -9,12 +9,12 @@
     <p>{{ stateValue }}</p>-->
     <!-- setter 实现双向绑定 -->
     <a-input v-model="stateValue" />
-    <p>{{ stateValue }}</p>
+    <p>stateValue:{{ stateValue }}</p>
 
     <a-show :content="inputValue" />
     <p>vuex state: {{ appName }}?{{ appVersion }} | getter: {{ appNameWithVersion }}</p>
     <p>vuex user module: {{ userName }} | user getter: {{ firstLetter }}</p>
-    <button @click="changeAppname">mutation appname</button>
+    <button @click="changeAppVersion">changeAppVersion</button>
     <button @click="changeUsername">mutation username</button>
     <button @click="handleActions">handleActions updateAppName</button>
     <button @click="registerModule">动态注册模块</button>
@@ -68,7 +68,7 @@ export default {
       this.updateAppname();
       // this.$store.dispatch('updateAppname')
     },
-    changeAppname() {
+    changeAppVersion() {
       // 方法一、
       //this.$store.commit("SET_APP_NAME", { value: "new app name" });
       // 方法二、
@@ -78,7 +78,7 @@ export default {
       // })
       // this.$store.commit('SET_APP_VERSION')
       // 方法三、
-      this.SET_APP_VERSION("new name");
+      // this.SET_APP_VERSION("new name");
       this.SET_APP_VERSION();
     },
     changeUsername() {
@@ -139,3 +139,9 @@ export default {
   }
 };
 </script>
+<style lang="less">
+button {
+  padding: 0 5px;
+  margin-right: 10px;
+}
+</style>

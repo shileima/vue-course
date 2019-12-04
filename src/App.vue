@@ -3,9 +3,10 @@
     <Spin fix v-if="showLoading">加载中...</Spin>
     <div id="nav">
       <router-link to="/">Home</router-link>|
-      <router-link :to="{name:'login'}">Login</router-link>|
-      <router-link :to="{name:'profile'}">Profile</router-link>|
-      <router-link :to="{name:'store'}">Store</router-link>|
+      <router-link :to="{name:'login'}">login</router-link>|
+      <router-link :to="{name:'profile'}">profile</router-link>|
+      <router-link :to="{name:'store'}">store</router-link>|
+      <router-link :to="{name:'parent'}">parent</router-link>|
       <router-link :to="{name:'table'}">table</router-link>|
       <router-link :to="{name:'message'}">message</router-link>|
       <Button @click="handleLogout">退出</Button>
