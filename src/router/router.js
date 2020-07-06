@@ -120,11 +120,17 @@ export default [
         name: 'mixin',
         component: () => import('@/views/mixinIndex.vue')
     },
-    // render
+    // jsx
     {
         path: '/jsx',
         name: 'jsx',
         component: () => import('@/views/jsx/index.vue')
+    },
+    // prop
+    {
+        path: '/prop',
+        name: 'prop',
+        component: () => import('@/views/prop.vue')
     },
     // 跳转
     {

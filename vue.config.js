@@ -14,12 +14,13 @@ module.exports = {
   // 打包时不生成 .map 文件
   productionSourceMap: false,
   devServer: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:3001',
-        changeOrigin: false
-      }
+      open: true,
+      proxy: {
+        '/api': {
+            target: 'http://localhost:3001',
+            changeOrigin: false
+        }
 
-    }
+      }
   }
 }

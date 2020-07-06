@@ -4,6 +4,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import ViewUI from 'view-design'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import 'view-design/dist/styles/iview.css'
 
 import Bus from './lib/bus' // 组件间交互中介
@@ -14,6 +16,9 @@ if (process.env.NODE_ENV !== 'production') {
 Vue.use(ViewUI)
 Vue.config.productionTip = false
 Vue.prototype.$bus = Bus
+
+// element ui
+Vue.use(ElementUI)
 
 // const eventClick = event => {
 //     console.log(event)
