@@ -6,40 +6,40 @@
   </div>
 </template>
 <script>
-import { mapActions } from "vuex";
-import store from "../store";
+import { mapActions } from 'vuex'
+import store from '../store'
 
 export default {
-  name: "login",
-  data() {
+  name: 'login',
+  data () {
     return {
-      username: "",
-      password: ""
-    };
+      username: '',
+      password: ''
+    }
   },
-  mounted() {
-    console.log(this._info);
+  mounted () {
+    console.log(this._info)
   },
   methods: {
-    ...mapActions(["toLogin"]),
-    handleLogin() {
+    ...mapActions(['toLogin']),
+    handleLogin () {
       this.toLogin({ username: this.username, password: this.password })
         .then(
           res => {
-            this.$Message.success("登录成功！");
+            this.$Message.success('登录成功！')
             this.$router.push({
-              name: "home"
-            });
+              name: 'home'
+            })
           },
           err => {
-            this.$Message.error(err);
+            this.$Message.error(err)
           }
         )
         .catch(err => {
-          console.log(err);
-          store.commit("SET_HIDE_LOADING");
-        });
+          console.log(err)
+          store.commit('SET_HIDE_LOADING')
+        })
     }
   }
-};
+}
 </script>

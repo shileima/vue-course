@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import RenderDom from "_c/render-dom";
+import RenderDom from '_c/render-dom'
 export default {
-  name: "List",
+  name: 'List',
   components: {
     RenderDom
   },
@@ -33,9 +33,9 @@ export default {
     }
   },
   methods: {
-    handleMoveOnce() {
-      console.log("move only once");
+    handleMoveOnce () {
+      console.log('move only once')
     }
   }
-};
+}
 </script>

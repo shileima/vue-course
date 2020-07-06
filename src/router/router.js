@@ -122,9 +122,9 @@ export default [
     },
     // render
     {
-        path: '/render',
-        name: 'render',
-        component: () => import('@/views/render/index.vue')
+        path: '/jsx',
+        name: 'jsx',
+        component: () => import('@/views/jsx/index.vue')
     },
     // 跳转
     {

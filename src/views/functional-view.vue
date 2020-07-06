@@ -4,20 +4,20 @@
   </div>
 </template>
 <script>
-import FunctionalList from "_c/functional-list";
+import FunctionalList from '_c/functional-list'
 export default {
   components: {
     FunctionalList
   },
-  data() {
+  data () {
     return {
-      lists: ["one", "two", "three"]
-    };
+      lists: ['one', 'two', 'three']
+    }
   },
   methods: {
-    handleClick() {
-      console.log("item click");
+    handleClick () {
+      console.log('item click')
     }
   }
-};
+}
 </script>

@@ -10,10 +10,10 @@
   </div>
 </template>
 <script>
-import menuComponent from "_c/menu";
-const { AMenuItem, ASubMenu } = menuComponent;
+import menuComponent from '_c/menu'
+const { AMenuItem, ASubMenu } = menuComponent
 export default {
-  name: "ReSubMenu",
+  name: 'ReSubMenu',
   components: {
     AMenuItem,
     ASubMenu
@@ -27,6 +27,6 @@ export default {
       type: Number
     }
   }
-};
+}
 </script>
 <style lang="stylus"></style>

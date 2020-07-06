@@ -18,61 +18,61 @@
 
 <script>
 export default {
-  name: "splitPane",
+  name: 'splitPane',
   props: {
     triggerWidth: {
       type: String,
-      default: 8
+      default: '8'
     },
     value: {
       type: Number,
       default: 0.3
     }
   },
-  data() {
+  data () {
     return {
       canMove: false,
       initOffset: 0
-    };
+    }
   },
   computed: {
-    leftOffsetPercent() {
-      return `${this.value * 100}%`;
+    leftOffsetPercent () {
+      return `${this.value * 100}%`
     },
-    triggerLeft() {
-      return `calc(${this.value * 100}% - ${this.triggerWidth / 2}px)`;
+    triggerLeft () {
+      return `calc(${this.value * 100}% - ${this.triggerWidth / 2}px)`
     }
   },
   methods: {
-    handleMousedown(event) {
-      console.log(event.pageX - event.srcElement.getBoundingClientRect().left);
+    handleMousedown (event) {
+      console.log(event.pageX - event.srcElement.getBoundingClientRect().left)
 
-      document.addEventListener("mousemove", this.handleMousemove, false);
-      document.addEventListener("mouseup", this.handleMouseup, false);
+      document.addEventListener('mousemove', this.handleMousemove, false)
+      document.addEventListener('mouseup', this.handleMouseup, false)
       this.initOffset =
         event.pageX -
         event.srcElement.getBoundingClientRect().left -
-        this.triggerWidth / 2;
-      this.canMove = true;
+        this.triggerWidth / 2
+      this.canMove = true
     },
-    handleMouseup() {
-      this.canMove = false;
+    handleMouseup () {
+      this.canMove = false
     },
-    handleMousemove(event) {
-      if (!this.canMove) return;
+    handleMousemove (event) {
+      if (!this.canMove) return
       let $outerRect = this.$refs.outer
         ? this.$refs.outer.getBoundingClientRect()
-        : null;
-      let offset = event.pageX - $outerRect.left - this.initOffset;
-      offset = Math.max(0, offset);
-      offset = Math.min(offset, $outerRect.width);
+        : null
+      let offset = event.pageX - $outerRect.left - this.initOffset
+      offset = Math.max(0, offset)
+      offset = Math.min(offset, $outerRect.width)
       // console.log(offset);
       // this.value = offset / $outerRect.width;
       // 不能直接修改 props : this.value 必须触发事件$emit
-      this.$emit("update:value", offset / $outerRect.width);
+      this.$emit('update:value', offset / $outerRect.width)
     }
   }
-};
+}
 </script>
 <style lang="less" scoped>
 .split-pane-wrapper {

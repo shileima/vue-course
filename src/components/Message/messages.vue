@@ -6,25 +6,25 @@
 
 <script>
 export default {
-  data() {
-    return { messages: [] };
+  data () {
+    return { messages: [] }
   },
-  mounted() {
-    this.id = 0;
+  mounted () {
+    this.id = 0
   },
   methods: {
-    add(options) {
-      let id = this.id++;
-      let layer = { ...options, id };
-      this.messages.push(layer);
+    add (options) {
+      let id = this.id++
+      let layer = { ...options, id }
+      this.messages.push(layer)
       layer.time = setTimeout(() => {
-        this.remove(layer);
-      }, options.duration);
+        this.remove(layer)
+      }, options.duration)
     },
-    remove(layer) {
-      clearTimeout(layer.time);
-      this.messages = this.messages.filter(message => message.id !== layer.id);
+    remove (layer) {
+      clearTimeout(layer.time)
+      this.messages = this.messages.filter(message => message.id !== layer.id)
     }
   }
-};
+}
 </script>

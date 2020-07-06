@@ -6,7 +6,7 @@ import actions from './actions'
 import user from './module/user'
 import getters from './getters'
 
-import saveInLocal from './plugins/saveInLocal'
+// import saveInLocal from './plugins/saveInLocal'
 
 Vue.use(Vuex)
 

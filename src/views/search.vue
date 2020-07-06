@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import { getProducts } from "../lib/util";
+import { getProducts } from '../lib/util'
 export default {
   props: {},
-  data() {
+  data () {
     return {
-      searchText: "n",
+      searchText: 'n',
       lists: []
-    };
+    }
   },
   // created() {
   //   console.log("created");
@@ -25,15 +25,15 @@ export default {
   // },
   watch: {
     searchText: {
-      handler: "fetchUserList",
+      handler: 'fetchUserList',
       immediate: true
     }
   },
   methods: {
-    fetchUserList(value) {
-      let rs = getProducts(value);
-      this.lists = rs;
+    fetchUserList (value) {
+      let rs = getProducts(value)
+      this.lists = rs
     }
   }
-};
+}
 </script>

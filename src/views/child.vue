@@ -6,20 +6,20 @@
 </template>
 <script>
 export default {
-  name: "child",
-  data() {
+  name: 'child',
+  data () {
     return {
-      message:''
-    };
+      message: ''
+    }
   },
-  created() {
-    console.log("child created");
+  created () {
+    console.log('child created')
   },
-  mounted() {
-    console.log("child mounted");
-    this.$bus.$on("dinner", data => {
-      this.message = data;
-    });
+  mounted () {
+    console.log('child mounted')
+    this.$bus.$on('dinner', data => {
+      this.message = data
+    })
   }
-};
+}
 </script>

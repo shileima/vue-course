@@ -8,17 +8,17 @@
 </template>
 
 <script>
-import SplitPane from "_c/split-pane";
+import SplitPane from '_c/split-pane'
 export default {
   components: {
     SplitPane
   },
-  data() {
+  data () {
     return {
       offset: 0.56769
-    };
+    }
   }
-};
+}
 </script>
 <style lang="less">
 .split-pane-con {

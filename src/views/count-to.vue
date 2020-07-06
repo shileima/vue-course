@@ -9,29 +9,29 @@
   </div>
 </template>
 <script>
-import CountTo from "_c/count-to";
+import CountTo from '_c/count-to'
 export default {
-  name: "count_to",
+  name: 'count_to',
   components: {
     CountTo
   },
-  data() {
+  data () {
     return {
       endVal: 1000
-    };
+    }
   },
   methods: {
-    getNumber() {
-      console.log(this.$refs.countTo.getVal());
+    getNumber () {
+      console.log(this.$refs.countTo.getVal())
     },
-    updateNumber() {
-      this.endVal = 100 + Math.random() * 100;
+    updateNumber () {
+      this.endVal = 100 + Math.random() * 100
     },
-    handleAnimationEnd(value) {
-      console.log(parseInt(value));
+    handleAnimationEnd (value) {
+      console.log(parseInt(value))
     }
   }
-};
+}
 </script>
 <style lang="css">
 .countOne {

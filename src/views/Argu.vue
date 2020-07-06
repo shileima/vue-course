@@ -9,12 +9,12 @@ export default {
   props: {
     name: {
       type: String,
-      default: "loading"
+      default: 'loading'
     }
   },
-  beforeRouteUpdate(to, from, next) {
-    console.log(to.name, from.name);
-    console.log(this); // 有 this
+  beforeRouteUpdate (to, from, next) {
+    console.log(to.name, from.name)
+    console.log(this) // 有 this
   }
-};
+}
 </script>

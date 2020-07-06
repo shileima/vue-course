@@ -23,56 +23,56 @@
   </div>
 </template>
 <script>
-import menuComponent from "_c/menu";
-const { AMenu, AMenuItem, ASubMenu } = menuComponent;
-import ReSubMenu from "./re-submenu";
+import menuComponent from '_c/menu'
+import ReSubMenu from './re-submenu'
+const { AMenu, AMenuItem } = menuComponent
 
 export default {
-  name: "menu_page",
+  name: 'menu_page',
   components: {
     AMenu,
     AMenuItem,
-    ASubMenu,
+    // ASubMenu,
     ReSubMenu
   },
-  data() {
+  data () {
     return {
       list: [
         {
-          title: "1111"
+          title: '1111'
         },
         {
-          title: "2222"
+          title: '2222'
         },
         {
-          title: "3333",
+          title: '3333',
           children: [
             {
-              title: "3333-111"
+              title: '3333-111'
             },
             {
-              title: "3333-222"
+              title: '3333-222'
             },
             {
-              title: "3333-333",
+              title: '3333-333',
               children: [
                 {
-                  title: "3333-333-11"
+                  title: '3333-333-11'
                 },
                 {
-                  title: "3333-333-12",
+                  title: '3333-333-12',
                   children: [
                     {
-                      title: "3333-333-12-1"
+                      title: '3333-333-12-1'
                     },
                     {
-                      title: "3333-333-12-2"
+                      title: '3333-333-12-2'
                     },
                     {
-                      title: "3333-333-12-3",
+                      title: '3333-333-12-3',
                       children: [
                         {
-                          title: "3333-333-12-3-1"
+                          title: '3333-333-12-3-1'
                         }
                       ]
                     }
@@ -83,9 +83,9 @@ export default {
           ]
         }
       ]
-    };
+    }
   }
-};
+}
 </script>
 <style lang="less">
 .menu-box {

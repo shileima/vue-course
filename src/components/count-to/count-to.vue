@@ -7,20 +7,20 @@
 </template>
 
 <script>
-import CountUp from "countup";
+import CountUp from 'countup'
 export default {
-  name: "CountTo",
-  data() {
+  name: 'CountTo',
+  data () {
     return {
       countup: {}
-    };
+    }
   },
   computed: {
-    eleId() {
-      return `count_up_${this._uid}`;
+    eleId () {
+      return `count_up_${this._uid}`
     },
-    countClass() {
-      return ["count-to-number", this.className];
+    countClass () {
+      return ['count-to-number', this.className]
     }
   },
   props: {
@@ -54,37 +54,37 @@ export default {
     },
     separator: {
       type: String,
-      default: ","
+      default: ','
     },
     decimal: {
       type: String,
-      default: "."
+      default: '.'
     },
     className: {
       type: String,
-      default: ""
+      default: ''
     }
   },
   methods: {
-    getVal() {
-      return this.$refs.number.innerText;
+    getVal () {
+      return this.$refs.number.innerText
     },
-    eventEnd() {
+    eventEnd () {
       // updated end event
       setTimeout(() => {
         this.$nextTick(() => {
-          this.$emit("animation-end", Number(this.getVal()));
-        });
-      }, this.duration * 1000 + 10);
+          this.$emit('animation-end', Number(this.getVal()))
+        })
+      }, this.duration * 1000 + 10)
     }
   },
   watch: {
-    endVal(newVal, oldVal) {
-      this.countup.update(newVal);
-      this.eventEnd();
+    endVal (newVal, oldVal) {
+      this.countup.update(newVal)
+      this.eventEnd()
     }
   },
-  mounted() {
+  mounted () {
     this.$nextTick(() => {
       this.countup = new CountUp(
         this.eleId,
@@ -98,14 +98,14 @@ export default {
           separator: this.separator,
           decimal: this.decimal
         }
-      );
+      )
       setTimeout(() => {
-        this.countup.start();
-        this.eventEnd();
-      }, this.delay);
-    });
+        this.countup.start()
+        this.eventEnd()
+      }, this.delay)
+    })
   }
-};
+}
 </script>
 <style lang="less">
 .count-to-number {

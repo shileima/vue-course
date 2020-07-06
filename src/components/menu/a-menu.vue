@@ -5,8 +5,8 @@
 </template>
 <script>
 export default {
-  name: "AMenu"
-};
+  name: 'AMenu'
+}
 </script>
 <style lang="less">
 .a-menu {

@@ -12,10 +12,10 @@
   </div>
 </template>
 <script>
-import List from "_c/list";
-import CountTo from "_c/count-to";
+import List from '_c/list'
+import CountTo from '_c/count-to'
 export default {
-  data() {
+  data () {
     return {
       /* lists: [
         { name: "loading" },
@@ -23,7 +23,7 @@ export default {
         { name: "James Harden" }
       ], */
       lists: [{ name: 144 }, { name: 889 }, { name: 9000 }]
-    };
+    }
   },
   /* template中使用外引组件必须在components注册 */
   components: {
@@ -31,11 +31,11 @@ export default {
     CountTo
   },
   methods: {
-    handleUlClick() {
-      console.log("ul click");
+    handleUlClick () {
+      console.log('ul click')
     },
-    handleLiClick() {
-      console.log("li click");
+    handleLiClick () {
+      console.log('li click')
     },
     /* 1、使用render=>h函数渲染 */
     /* renderFunc(h, name) {
@@ -50,7 +50,7 @@ export default {
       );
     }, */
     /* 2、使用jsx方式 */
-    renderFunc(h, name) {
+    renderFunc (h, name) {
       /* 1、渲染html 标签 */
       /* return (
         <i on-click={this.handleClick} style={{ color: "blue" }}>
@@ -61,31 +61,31 @@ export default {
       return (
         <CountTo
           endVal={name}
-          style={{ color: "darkBlue", fontSize: "30px" }}
+          style={{ color: 'darkBlue', fontSize: '30px' }}
           on-animation-end={this.handleEnd} /* 绑定组件内部emit的事件 */
           nativeOn-click={this.nativeClick} /* 绑定原生事件 */
           nativeOn-mouseup={this.handleMouseUp}
           nativeOn-mousemove={this.handleMove}
         ></CountTo>
-      );
+      )
     },
-    handleClick() {
-      console.log("on click");
+    handleClick () {
+      console.log('on click')
     },
-    handleEnd(val) {
+    handleEnd (val) {
       this.$nextTick(() => {
-        console.log("endVale => ", val);
-      });
+        console.log('endVale => ', val)
+      })
     },
-    nativeClick() {
-      console.log("nativeClick");
+    nativeClick () {
+      console.log('nativeClick')
     },
-    handleMouseUp() {
-      console.log("native mouseup");
+    handleMouseUp () {
+      console.log('native mouseup')
     },
-    handleMove(event) {
-      event.preventDefault();
+    handleMove (event) {
+      event.preventDefault()
     }
   }
-};
+}
 </script>

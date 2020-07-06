@@ -11,18 +11,18 @@
 </template>
 <script>
 export default {
-  name: "ASubMenu",
-  data() {
+  name: 'ASubMenu',
+  data () {
     return {
       showSub: false
-    };
+    }
   },
   methods: {
-    handleShowSub() {
-      this.showSub = !this.showSub;
+    handleShowSub () {
+      this.showSub = !this.showSub
     }
   }
-};
+}
 </script>
 <style lang="less">
 .a-submenu {

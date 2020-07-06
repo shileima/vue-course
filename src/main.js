@@ -7,7 +7,7 @@ import ViewUI from 'view-design'
 import 'view-design/dist/styles/iview.css'
 
 import Bus from './lib/bus' // 组件间交互中介
-import CountTo from '_c/count-to'
+// import CountTo from '_c/count-to'
 if (process.env.NODE_ENV !== 'production') {
     require('./mock')
 }
@@ -15,21 +15,21 @@ Vue.use(ViewUI)
 Vue.config.productionTip = false
 Vue.prototype.$bus = Bus
 
-const eventClick = event => {
-    console.log(event)
-    event.stopPropagation()
-}
-const list = [
-    { name: 'loading' },
-    { name: 'json' },
-    { name: 'james' }
-]
-const getEleArr = h => list.map((item, index) => h('li', {
-    key: `item_${index}`,
-    on: {
-        'click': eventClick
-    }
-}, item.name))
+// const eventClick = event => {
+//     console.log(event)
+//     event.stopPropagation()
+// }
+// const list = [
+//     { name: 'loading' },
+//     { name: 'json' },
+//     { name: 'james' }
+// ]
+// const getEleArr = h => list.map((item, index) => h('li', {
+//     key: `item_${index}`,
+//     on: {
+//         'click': eventClick
+//     }
+// }, item.name))
 let info = { a: 2, b: 10 }
 new Vue({
     name: 'parent',

@@ -8,13 +8,13 @@ const getters = {
 }
 
 const actions = {
-  updateUserName({ commit, state, rootState, dispatch }) {
+  updateUserName ({ commit, state, rootState, dispatch }) {
 
   }
 }
 
 const mutations = {
-  SET_USER_NAME(state, params) {
+  SET_USER_NAME (state, params) {
     state.userName = params
   }
 }

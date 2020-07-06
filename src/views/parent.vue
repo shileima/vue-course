@@ -8,25 +8,25 @@
 </template>
 
 <script>
-import Child from "@/views/child";
+import Child from '@/views/child'
 export default {
-  name: "parent",
+  name: 'parent',
   components: {
     Child
   },
-  created() {
-    console.log("parent created");
+  created () {
+    console.log('parent created')
   },
-  mounted() {
-    console.log("parent mounted");
+  mounted () {
+    console.log('parent mounted')
   },
   methods: {
-    handleChildMounted() {
-      console.log("notify child mounted");
+    handleChildMounted () {
+      console.log('notify child mounted')
     },
-    sayToGirl(){
-      this.$bus.$emit('dinner','你饿吗')
+    sayToGirl () {
+      this.$bus.$emit('dinner', '你饿吗')
     }
   }
-};
+}
 </script>

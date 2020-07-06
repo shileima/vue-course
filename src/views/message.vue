@@ -5,23 +5,23 @@
 </template>
 
 <script>
-import Vue from "vue";
-import Message from "_c/Message";
+import Vue from 'vue'
+import Message from '_c/Message'
 
-Vue.use(Message, { duration: 2000 });
+Vue.use(Message, { duration: 2000 })
 
 export default {
-  mounted() {
-    console.log(this);
+  mounted () {
+    console.log(this)
   },
   methods: {
-    showMessage() {
-      console.log(this);
+    showMessage () {
+      console.log(this)
       this.$message.info({
-        message: "我很帅！",
+        message: '我很帅！',
         duration: 3000
-      });
+      })
     }
   }
-};
+}
 </script>

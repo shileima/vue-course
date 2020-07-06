@@ -11,6 +11,7 @@
             <router-link :to="{name:'message'}">message</router-link>|
             <router-link :to="{name:'mixin'}">mixin</router-link>|
             <router-link :to="{name:'render'}">render</router-link>|
+            <router-link :to="{name:'jsx'}">jsx</router-link>|
             <Button @click="handleLogout">退出</Button>
         </div>
         <!-- <transition name="routerv">

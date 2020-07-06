@@ -5,15 +5,15 @@
 </template>
 
 <script>
-import clonedeep from "clonedeep";
+import clonedeep from 'clonedeep'
 export default {
-  name: "EditTable",
-  data() {
+  name: 'EditTable',
+  data () {
     return {
       insideColumns: [],
-      edittingId: "",
-      edittingContent: ""
-    };
+      edittingId: '',
+      edittingContent: ''
+    }
   },
   props: {
     columns: {
@@ -26,33 +26,33 @@ export default {
     }
   },
   methods: {
-    handleClick({ row, index, column }) {
+    handleClick ({ row, index, column }) {
       // console.log(row, index, column);
       if (this.edittingId === `${column.key}_${index}`) {
-        let tableData = clonedeep(this.value);
-        tableData[index][column.key] = this.edittingContent;
-        this.$emit("on-edit", {
+        let tableData = clonedeep(this.value)
+        tableData[index][column.key] = this.edittingContent
+        this.$emit('on-edit', {
           row,
           index,
           column,
           newValue: this.edittingContent
-        });
-        this.edittingId = "";
-        this.edittingContent = "";
+        })
+        this.edittingId = ''
+        this.edittingContent = ''
       } else {
-        this.edittingId = `${column.key}_${index}`;
+        this.edittingId = `${column.key}_${index}`
       }
       // console.log(this.edittingId);
     },
-    handleInput(newVal) {
-      this.edittingContent = newVal;
+    handleInput (newVal) {
+      this.edittingContent = newVal
     },
-    handleColumns() {
+    handleColumns () {
       const insideColumns = this.columns.map(item => {
         if (!item.render && item.editable) {
           item.render = (h, { row, index, column }) => {
             // console.log(row, index, column.key);
-            const isEditting = this.edittingId === `${column.key}_${index}`;
+            const isEditting = this.edittingId === `${column.key}_${index}`
             return (
               <div>
                 {isEditting ? (
@@ -70,26 +70,26 @@ export default {
                     column
                   })}
                 >
-                  {isEditting ? "save" : "edit"}
+                  {isEditting ? 'save' : 'edit'}
                 </i-button>
               </div>
-            );
-          };
-          return item;
+            )
+          }
+          return item
         } else {
-          return item;
+          return item
         }
-      });
-      this.insideColumns = insideColumns;
+      })
+      this.insideColumns = insideColumns
     }
   },
-  mounted() {
-    this.handleColumns();
+  mounted () {
+    this.handleColumns()
   },
   watch: {
-    columns() {
-      this.handleColumns();
+    columns () {
+      this.handleColumns()
     }
   }
-};
+}
 </script>
